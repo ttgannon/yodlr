@@ -14,14 +14,20 @@ router.get('/', function(req, res) {
 
 /* Create a new user */
 router.post('/', function(req, res) {
-  var user = req.body;
-  user.id = curId++;
-  if (!user.state) {
-    user.state = 'pending';
+  if (req.body) {
+    var user = req.body;
+    user.id = curId++;
+    if (!user.state) {
+      user.state = 'pending';
+    }
+    users[user.id] = user;
+    log.info('Created user', user);
+    res.status(201).send(users);
+  } else {
+    res.status(500).send();
   }
-  users[user.id] = user;
-  log.info('Created user', user);
-  res.json(user);
+    
+  
 });
 
 /* Get a specific user by id */

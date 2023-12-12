@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
   <meta charset=utf-8>
   <title>Yodlr Registration Portal</title>
 </head>
 <body>
-  <h1>Yodlr Registration Portal</h1>
-  <div class="col-md-10 mx-auto col-lg-5">
-    <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+  <div class="col-md-10 mx-auto my-5 col-lg-5 align-items-center">
+    <h1>Yodlr Registration Portal</h1>
+    <form id="registrationForm" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
       <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
         <label for="floatingInput">First Name</label>
       </div>
       <div class="form-floating mb-3">
@@ -34,8 +35,36 @@
       <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
     </form>
   </div>
-  <p>
-    <a href="/admin.html">Admin Page</a>
-  </p>
 </body>
+<script>
+  document.getElementById('registrationForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const formDataJson = {};
+
+      formData.forEach((value, key) => {
+        formDataJson[key] = value;
+      });
+      const formDataJsonString = JSON.stringify(formDataJson);
+
+      fetch('/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: formDataJsonString,
+      })
+      .then(response => {
+    if (response.status === 201) {
+      window.location.href = '/admin.html';
+    } else {
+      // Handle other responses as needed
+      console.error('Unexpected response:', response);
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    });
+  });
+</script>
 </html>

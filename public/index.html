@@ -6,27 +6,21 @@
   <title>Yodlr Design Challenge</title>
 </head>
 <body>
-  <div class="container col-xxl-8 px-4 py-5">
-    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-      <div class="col-10 col-sm-8 col-lg-6">
-        <img src="" class="d-block mx-lg-auto img-fluid" alt="Yodlr" width="700" height="500" loading="lazy">
-      </div>
-      <div class="col-lg-6">
-        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Welcome to Yodlr.</h1>
-        <p class="lead">You're gonna love this.</p>
-        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" href="/signup.html" class="btn btn-primary btn-lg px-4 me-md-2">Sign Up</button>
-          <button type="button" href="/admin.html" class="btn btn-outline-secondary btn-lg px-4">Log In</button>
-        </div>
+  <div class="container my-5">
+  <div class="row p-4 align-items-center rounded-3 border shadow-lg">
+    <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Welcome to Yodlr.</h1>
+      <p class="lead">You're gonna love this.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+        <button type="button" onclick="window.location.href='/signup.html'" class="btn btn-primary btn-lg px-4 me-md-2">Sign Up</button>
+        <button type="button" onclick="window.location.href='/admin.html'" class="btn btn-outline-secondary btn-lg px-4">View Admin</button>
       </div>
     </div>
+    <div class="col-lg-4 offset-lg-1 mx-5 p-5">
+        <img src="/assets/2913366.png" class="d-block mx-lg-auto img-fluid" alt="Yodlr" width="400" height="200" loading="lazy">
+    </div>
   </div>
-  
-  <p>
-    <a href="/signup.html">Registration Page</a><br/>
-    <a href="/admin.html">Admin Page</a>
-  </p>
+</div>
   <script type="script" src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
